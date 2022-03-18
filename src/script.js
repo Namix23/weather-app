@@ -88,4 +88,4 @@ function handleSubmit(event) {
 let locationForm = document.querySelector("#location-form");
 locationForm.addEventListener("submit", handleSubmit);
 
-searchCity("Manhattan");
+searchCity("Brooklyn");
