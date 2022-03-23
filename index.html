@@ -15,14 +15,25 @@
       src="https://kit.fontawesome.com/5c151fbf70.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Headland+One&display=swap"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Headland+One&family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Headland+One&family=Quicksand:wght@500&display=swap"
+      media="print"
+      onload="this.media=`all`"
     />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Headland+One&family=Quicksand:wght@500&display=swap"
+    /></noscript>
     <title>Wireframe to HTML/CSS</title>
     <link rel="stylesheet" href="src/main.css" />
   </head>
@@ -126,8 +137,10 @@
         controls
       ></audio>
       <footer>
-        <a href="https://github.com/Namix23/weather-app" target="_blank">Open-source code</a> by
-        Nataly Yi & Hosted with
+        <a href="https://github.com/Namix23/weather-app" target="_blank"
+          >Open-source code</a
+        >
+        by Nataly Yi & Hosted with
         <a href="https://www.netlify.com/" target="_blank">Netlify</a>
       </footer>
     </div>
