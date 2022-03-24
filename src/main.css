@@ -5,6 +5,11 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 
+li {
+  list-style: none;
+  margin: 5px;
+}
+
 h1,
 .future-forecast {
   font-family: "Headland One", serif;
@@ -25,11 +30,7 @@ div.weather-description {
 
 button.lctn-btn {
   border: 2px solid black;
-  background: linear-gradient(
-    120deg,
-    rgb(115, 120, 252) 0%,
-    rgb(85, 177, 246) 100%
-  );
+  background: #5ba9f7;
   padding: 6px 10px 6px 10px;
 }
 
@@ -46,12 +47,39 @@ button.lctn-btn {
   border: 2px solid #000;
   border-radius: 25px;
   background: linear-gradient(
-    120deg,
+    336deg,
     rgb(115, 120, 252) 0%,
     rgb(85, 177, 246) 100%
   );
-  width: 55%;
-  padding: 6px;
+  width: 40%;
+  padding: 5px;
+}
+
+.bounce:hover {
+  animation: bounce 1s ease-in-out;
+}
+@keyframes bounce {
+  70% {
+    transform: translateY(0%);
+  }
+  80% {
+    transform: translateY(-15%);
+  }
+  90% {
+    transform: translateY(0%);
+  }
+  95% {
+    transform: translateY(-7%);
+  }
+  97% {
+    transform: translateY(0%);
+  }
+  99% {
+    transform: translateY(-3%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .today-temp {
@@ -66,8 +94,9 @@ button.lctn-btn {
 
 .toggle-btn {
   position: relative;
-  top: -30px;
-  left: -16px;
+  top: -38px;
+  left: -12px;
+  line-height: 35px;
 }
 
 .celsius-btn,

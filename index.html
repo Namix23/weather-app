@@ -43,7 +43,7 @@
         <div class="search-bar">
           <br />
           <button
-            class="fa-solid fa-location-dot lctn-btn rounded-circle"
+            class="fa-solid fa-location-dot lctn-btn rounded-circle bounce"
             id="location-btn"
             type="button"
           ></button>
@@ -57,11 +57,10 @@
           <button class="fa-solid fa-search search-btn" type="submit"></button>
         </div>
       </form>
-      <div class="row today-status">
-        <div class="col-6" id="current-date"></div>
-        <div class="col-6" id="current-time"></div>
-      </div>
-      <br />
+      <ul>
+        <li id="current-date"></li>
+        <li id="current-time"></li>
+      </ul>
       <section>
         <h1>
           <span id="city-searched"></span><br /><span
@@ -69,7 +68,7 @@
             id="current-temp"
           ></span>
           <div class="btn-group toggle-btn" role="group">
-            ℃
+            °
             <button type="button" class="btn btn-outline-primary celsius-btn">
               <a href="#" id="celsius-conversion">C</a>
             </button>
@@ -81,55 +80,56 @@
             </button>
           </div>
         </h1>
-        <div class="row">
-          <div class="col-12 today-forecast">
-            <span id="high-temp"></span>°<i
-              class="fa-solid fa-up-long today-status"
-            ></i
-            >/<span id="low-temp"></span>°<i class="fa-solid fa-down-long"></i>
-          </div>
-          <div class="col-12 today-forecast">
-            <i class="fa-solid fa-cloud-showers-heavy m-1"></i
-            ><span id="precipitation"></span>%
-          </div>
-          <div class="col-8 today-weather">
-            <img src="images/cloudy.jpg" width="80" />
-            <div class="weather-description" id="weather-description"></div>
-          </div>
-        </div>
       </section>
-      <div class="row future-forecast">
-        <div class="col">
-          <span class="day-forecast">Tuesday</span> <br />Feb 22<br /><img
-            src="images/thunderstorm.png"
-          /><span class="future-temp">62°/46°</span>
+      <div class="row">
+        <div class="col-12 today-forecast">
+          <span id="high-temp"></span>°<i
+            class="fa-solid fa-up-long today-status"
+          ></i
+          >/<span id="low-temp"></span>°<i class="fa-solid fa-down-long"></i>
         </div>
-        <div class="col">
-          <span class="day-forecast">Wednesday</span> <br />Feb 23<br /><img
-            src="images/thunderstorm.png"
-          /><span class="future-temp">61°/46°</span>
+        <div class="col-12 today-forecast">
+          <i class="fa-solid fa-cloud-showers-heavy m-1"></i
+          ><span id="precipitation"></span>%
         </div>
-        <div class="col">
-          <span class="day-forecast">Thursday</span> <br />Feb 24<br /><img
-            src="images/thunderstorm.png"
-          /><span class="future-temp">6o°/46°</span>
+        <div class="col-8 today-weather">
+          <img src="images/cloudy.jpg" width="85" />
+          <div class="weather-description" id="weather-description"></div>
         </div>
-        <div class="col">
-          <span class="day-forecast">Friday</span><br />Feb 25<br /><img
-            src="images/thunderstorm.png"
-          /><span class="future-temp">60°/46°</span>
-        </div>
-        <div class="col">
-          <span class="day-forecast">Saturday</span> <br />Feb 26<br /><img
-            src="images/thunderstorm.png"
-          /><span class="future-temp">57°/45°</span>
-        </div>
-        <div class="col">
-          <span class="day-forecast">Sunday</span> <br />Feb 27<br /><img
-            src="images/thunderstorm.png"
-          /><span class="future-temp">59°/44°</span>
+        <div class="row future-forecast">
+          <div class="col">
+            <span class="day-forecast">Tuesday</span> <br />Feb 22<br /><img
+              src="images/thunderstorm.png"
+            /><span class="future-temp">62°/46°</span>
+          </div>
+          <div class="col">
+            <span class="day-forecast">Wednesday</span> <br />Feb 23<br /><img
+              src="images/thunderstorm.png"
+            /><span class="future-temp">61°/46°</span>
+          </div>
+          <div class="col">
+            <span class="day-forecast">Thursday</span> <br />Feb 24<br /><img
+              src="images/thunderstorm.png"
+            /><span class="future-temp">6o°/46°</span>
+          </div>
+          <div class="col">
+            <span class="day-forecast">Friday</span><br />Feb 25<br /><img
+              src="images/thunderstorm.png"
+            /><span class="future-temp">60°/46°</span>
+          </div>
+          <div class="col">
+            <span class="day-forecast">Saturday</span> <br />Feb 26<br /><img
+              src="images/thunderstorm.png"
+            /><span class="future-temp">57°/45°</span>
+          </div>
+          <div class="col">
+            <span class="day-forecast">Sunday</span> <br />Feb 27<br /><img
+              src="images/thunderstorm.png"
+            /><span class="future-temp">59°/44°</span>
+          </div>
         </div>
       </div>
+
       <br />
       <br />
       <audio
@@ -140,7 +140,7 @@
         <a href="https://github.com/Namix23/weather-app" target="_blank"
           >Open-source code</a
         >
-        by Nataly Yi & Hosted with
+        by Nataly Yi & hosted on
         <a href="https://www.netlify.com/" target="_blank">Netlify</a>
       </footer>
     </div>
