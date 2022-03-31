@@ -60,10 +60,10 @@
               type="submit"
             ></button>
           </form>
-          <ul>
-            <li id="current-date">Friday, March 25, 2022</li>
-            <li id="current-time">05:00</li>
-          </ul>
+          <span id="current-date"
+            >Friday, March 25, 2022 <br />
+            05:00</span
+          >
           <h1>
             <span id="city-searched"></span><br /><span
               class="today-temp"
@@ -84,20 +84,30 @@
           </h1>
           <div class="row today-forecast">
             <div class="col-6">
-              <span id="high-temp"></span>°
-              <i class="fa-solid fa-temperature-arrow-up"></i>/<span
-                id="low-temp"
-              ></span
-              >°<i class="fa-solid fa-down-long"></i>
+              <i class="fa-solid fa-up-long"></i
+              ><i
+                class="fa-solid fa-temperature-full"
+                style="color: #f83d3d"
+              ></i
+              ><span id="high-temp"></span>°/<i
+                class="fa-solid fa-down-long"
+              ></i
+              ><i
+                class="fa-solid fa-temperature-quarter"
+                style="color: #2397e4"
+              ></i
+              ><span id="low-temp"></span>°
               <br />
-              <i class="fa-solid fa-cloud-showers-heavy"></i>
-              <span id="precipitation"></span>%<br />
-              <span id="humidity">40%</span>
+              <i class="fa-solid fa-cloud-showers-heavy"></i> Precipitation:
+              <span id="precipitation"></span>%<br /><i
+                class="fa-solid fa-droplet"
+              ></i>
+              Humidity: <span id="humidity"> </span>%
               <br />
-              <span id="wind">4 km/h</span>
+              <i class="fa-solid fa-wind"></i>Wind: <span id="wind"> </span> mph
             </div>
             <div class="col-6">
-              <ul>
+              <ul class="image-and-description">
                 <li>
                   <img src="images/cloudy.jpg" class="pulse" width="85" />
                 </li>
@@ -109,7 +119,7 @@
           </div>
           <br />
           <section>
-            <div class="row">
+            <div class="row" style="margin: 0 auto 10px">
               <div class="col">
                 <span class="day-forecast">Tuesday</span><br />
                 <img src="images/thunderstorm.png" /><br /><span

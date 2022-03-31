@@ -36,10 +36,7 @@ if (mins < 10) {
 }
 
 let currentDate = document.querySelector("#current-date");
-currentDate.innerHTML = `${day}, ${month} ${date}, ${yr}`;
-
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${hrs}:${mins}`;
+currentDate.innerHTML = `${day}, ${month} ${date}, ${yr} <br/> ${hrs}:${mins}`;
 
 function displayWeatherInfo(response) {
   document.querySelector("#city-searched").innerHTML = response.data.name;
