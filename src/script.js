@@ -1,42 +1,46 @@
-let currently = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[currently.getDay()];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[currently.getMonth()];
-let date = currently.getDate();
-let yr = currently.getFullYear();
-let hrs = currently.getHours();
-if (hrs < 10) {
-  hrs = `0${hrs}`;
+function formatDate(timestamp) {
+  let currently = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[currently.getDay()];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[currently.getMonth()];
+  let date = currently.getDate();
+  let yr = currently.getFullYear();
+  let hrs = currently.getHours();
+  hrs = ((hrs + 11) % 12) + 1;
+  let mins = currently.getMinutes();
+  if (mins < 10) {
+    mins = `0${mins}`;
+  }
+  let period = " ";
+  if (currently.getHours() >= 12) {
+    period = "PM";
+  } else {
+    period = "AM";
+  }
+  return `${day}, ${month} ${date}, ${yr} <br/> ${hrs}:${mins} ${period}`;
 }
-let mins = currently.getMinutes();
-if (mins < 10) {
-  mins = `0${mins}`;
-}
-
-let currentDate = document.querySelector("#current-date");
-currentDate.innerHTML = `${day}, ${month} ${date}, ${yr} <br/> ${hrs}:${mins}`;
 
 function displayWeatherInfo(response) {
   document.querySelector("#city-searched").innerHTML = response.data.name;
@@ -49,9 +53,24 @@ function displayWeatherInfo(response) {
   document.querySelector("#low-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
-  document.querySelector("#precipitation").innerHTML = response.data.clouds.all;
+  document.querySelector("#current-date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
+  document
+    .querySelector("#weather-icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#weather-icon")
+    .setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchLocation(position) {
@@ -79,7 +98,11 @@ function searchCity(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
-  searchCity(city);
+  if (city.length <= 0) {
+    alert(`please type a city`);
+  } else {
+    searchCity(city);
+  }
 }
 
 let locationForm = document.querySelector("#location-form");

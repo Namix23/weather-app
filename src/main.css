@@ -21,6 +21,10 @@ h1,
   margin: 0;
 }
 
+h1 {
+  line-height: 1;
+}
+
 input {
   background: linear-gradient(
     271deg,
@@ -102,6 +106,7 @@ img:hover.pulse {
 
 .today-forecast {
   display: inline-flex;
+  padding-top: 9px;
 }
 
 .today-temp {
