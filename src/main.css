@@ -65,6 +65,7 @@ button.search-btn {
   padding: 5px 6px;
   text-indent: -54px;
 }
+
 img:hover.pulse {
   animation: pulse 1s infinite ease-in-out alternate;
 }
@@ -79,7 +80,7 @@ img:hover.pulse {
 
 .celsius-btn:hover {
   background: linear-gradient(
-    301deg,
+    120deg,
     rgb(115, 120, 252) 0%,
     rgb(85, 177, 246) 100%
   );
@@ -87,7 +88,7 @@ img:hover.pulse {
 
 .fahrenheit-btn:hover {
   background: linear-gradient(
-    120deg,
+    301deg,
     rgb(115, 120, 252) 0%,
     rgb(85, 177, 246) 100%
   );
@@ -127,13 +128,13 @@ img:hover.pulse {
 }
 
 .celsius-btn {
-  border-radius: 50% 0 0 50%;
-  color: #5ba9f7;
+  border-radius: 0 50% 50% 0;
+  color: #7379fc;
 }
 
 .fahrenheit-btn {
-  border-radius: 0 50% 50% 0;
-  color: #7379fc;
+  border-radius: 50% 0 0 50%;
+  color: #5ba9f7;
 }
 
 .day-forecast {

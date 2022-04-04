@@ -44,9 +44,8 @@ function formatDate(timestamp) {
 
 function displayWeatherInfo(response) {
   document.querySelector("#city-searched").innerHTML = response.data.name;
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  celsiusTemp = response.data.main.temp;
+  document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemp);
   document.querySelector("#high-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
@@ -107,5 +106,28 @@ function handleSubmit(event) {
 
 let locationForm = document.querySelector("#location-form");
 locationForm.addEventListener("submit", handleSubmit);
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusButton.classList.remove("active");
+  fahrenheitButton.classList.add("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  document.querySelector("#current-temp").innerHTML =
+    Math.round(fahrenheitTemp);
+}
+let fahrenheitButton = document.querySelector("#fahrenheit-btn");
+fahrenheitButton.addEventListener("click", showFahrenheitTemperature);
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  fahrenheitButton.classList.remove("active");
+  celsiusButton.classList.add("active");
+  document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusButton = document.querySelector("#celsius-btn");
+celsiusButton.addEventListener("click", showCelsiusTemperature);
+
+let celsiusTemp = null;
 
 searchCity("Brooklyn");
