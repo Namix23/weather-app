@@ -44,8 +44,10 @@ function formatDate(timestamp) {
 
 function displayWeatherInfo(response) {
   document.querySelector("#city-searched").innerHTML = response.data.name;
-  celsiusTemp = response.data.main.temp;
-  document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemp);
+  fahrenheitTemp = response.data.main.temp;
+  document.querySelector("#current-temp").innerHTML =
+    Math.round(response.data.main.temp) + "°";
+
   document.querySelector("#high-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
@@ -76,7 +78,7 @@ function searchLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey = "683e4b4c8da99f743787774373494a6d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherInfo);
 }
 
@@ -90,7 +92,7 @@ locationButton.addEventListener("click", getCurrentLocation);
 
 function searchCity(city) {
   let apiKey = "683e4b4c8da99f743787774373494a6d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherInfo);
 }
 
@@ -107,27 +109,27 @@ function handleSubmit(event) {
 let locationForm = document.querySelector("#location-form");
 locationForm.addEventListener("submit", handleSubmit);
 
-function showFahrenheitTemperature(event) {
-  event.preventDefault();
-  celsiusButton.classList.remove("active");
-  fahrenheitButton.classList.add("active");
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  document.querySelector("#current-temp").innerHTML =
-    Math.round(fahrenheitTemp);
-}
-let fahrenheitButton = document.querySelector("#fahrenheit-btn");
-fahrenheitButton.addEventListener("click", showFahrenheitTemperature);
-
 function showCelsiusTemperature(event) {
   event.preventDefault();
   fahrenheitButton.classList.remove("active");
   celsiusButton.classList.add("active");
-  document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemp);
+  let celsiusTemp = Math.round(5 * (fahrenheitTemp - 32)) % 9;
+  document.querySelector("#current-temp").innerHTML = celsiusTemp + "°";
 }
 
 let celsiusButton = document.querySelector("#celsius-btn");
 celsiusButton.addEventListener("click", showCelsiusTemperature);
 
-let celsiusTemp = null;
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusButton.classList.remove("active");
+  fahrenheitButton.classList.add("active");
+  document.querySelector("#current-temp").innerHTML =
+    Math.round(fahrenheitTemp) + "°";
+}
+let fahrenheitButton = document.querySelector("#fahrenheit-btn");
+fahrenheitButton.addEventListener("click", showFahrenheitTemperature);
+
+let fahrenheitTemp = null;
 
 searchCity("Brooklyn");
