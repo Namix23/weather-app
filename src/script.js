@@ -113,8 +113,9 @@ function showCelsiusTemperature(event) {
   event.preventDefault();
   fahrenheitButton.classList.remove("active");
   celsiusButton.classList.add("active");
-  let celsiusTemp = Math.round(5 * (fahrenheitTemp - 32)) % 9;
-  document.querySelector("#current-temp").innerHTML = celsiusTemp + "°";
+  let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  document.querySelector("#current-temp").innerHTML =
+    Math.round(celsiusTemp) + "°";
 }
 
 let celsiusButton = document.querySelector("#celsius-btn");
