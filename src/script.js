@@ -43,7 +43,7 @@ function formatDate(timestamp) {
 }
 
 function displayWeatherInfo(response) {
-  displayWeatherForecast();
+  getForecast(response.data.coord);
   document.querySelector("#city-and-country").innerHTML =
     response.data.name + "," + response.data.sys.country;
   fahrenheitTemp = response.data.main.temp;
@@ -134,7 +134,8 @@ fahrenheitButton.addEventListener("click", showFahrenheitTemperature);
 
 let fahrenheitTemp = null;
 
-function displayWeatherForecast() {
+function displayWeatherForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row" style="margin:0 auto 5px">`;
   let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"];
@@ -142,17 +143,23 @@ function displayWeatherForecast() {
     forecastHTML =
       forecastHTML +
       `
-            <div class="col">
-                <span class="forecast-day">${day}</span><br />
-                <img src="images/thunderstorm.png" /><br /><span
-                  class="forecast-max-temp"
-                  >61°/</span
-                ><span class="forecast-min-temp">46°</span>
-              </div>
-           `;
+                  <div class="col">
+                      <span class="forecast-day">${day}</span><br />
+                      <img src="images/thunderstorm.png" /><br /><span
+                        class="forecast-max-temp"
+                        >61°/</span
+                      ><span class="forecast-min-temp">46°</span>
+                    </div>
+                 `;
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "683e4b4c8da99f743787774373494a6d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayWeatherForecast);
 }
 
 searchCity("Brooklyn");
