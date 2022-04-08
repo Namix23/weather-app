@@ -135,22 +135,30 @@ fahrenheitButton.addEventListener("click", showFahrenheitTemperature);
 let fahrenheitTemp = null;
 
 function displayWeatherForecast(response) {
-  console.log(response.data.daily);
+  let dailyForecast = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row" style="margin:0 auto 5px">`;
-  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-                  <div class="col">
-                      <span class="forecast-day">${day}</span><br />
-                      <img src="images/thunderstorm.png" /><br /><span
-                        class="forecast-max-temp"
-                        >61°/</span
-                      ><span class="forecast-min-temp">46°</span>
-                    </div>
-                 `;
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+            <div class="col">
+            <span class="forecast-day">${formatDay(
+              forecastDay.dt
+            )}</span><br />${index} <br/>  
+            <img 
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" alt="" width="75"/><br /><span
+            class="forecast-max-temp"
+            >${Math.round(forecastDay.temp.max)}°/</span
+            ><span class="forecast-min-temp">${Math.round(
+              forecastDay.temp.min
+            )}°</span>
+            </div>
+            `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
@@ -160,6 +168,22 @@ function getForecast(coordinates) {
   let apiKey = "683e4b4c8da99f743787774373494a6d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherForecast);
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
 }
 
 searchCity("Brooklyn");
