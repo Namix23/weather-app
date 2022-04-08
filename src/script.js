@@ -43,11 +43,12 @@ function formatDate(timestamp) {
 }
 
 function displayWeatherInfo(response) {
-  document.querySelector("#city-searched").innerHTML = response.data.name;
+  displayWeatherForecast();
+  document.querySelector("#city-and-country").innerHTML =
+    response.data.name + "," + response.data.sys.country;
   fahrenheitTemp = response.data.main.temp;
   document.querySelector("#current-temp").innerHTML =
     Math.round(response.data.main.temp) + "°";
-
   document.querySelector("#high-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
@@ -132,5 +133,26 @@ let fahrenheitButton = document.querySelector("#fahrenheit-btn");
 fahrenheitButton.addEventListener("click", showFahrenheitTemperature);
 
 let fahrenheitTemp = null;
+
+function displayWeatherForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row" style="margin:0 auto 5px">`;
+  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col">
+                <span class="forecast-day">${day}</span><br />
+                <img src="images/thunderstorm.png" /><br /><span
+                  class="forecast-max-temp"
+                  >61°/</span
+                ><span class="forecast-min-temp">46°</span>
+              </div>
+           `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
 
 searchCity("Brooklyn");
