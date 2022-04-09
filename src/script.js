@@ -43,6 +43,7 @@ function formatDate(timestamp) {
 }
 
 function displayWeatherInfo(response) {
+  console.log(response.data);
   getForecast(response.data.coord);
   document.querySelector("#city-and-country").innerHTML =
     response.data.name + "," + response.data.sys.country;
@@ -143,7 +144,7 @@ function displayWeatherForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-            <div class="col">
+            <div class="six-day-forecast col">
             <span class="forecast-day">${formatDay(forecastDay.dt)}</span>
             <img 
             src="http://openweathermap.org/img/wn/${

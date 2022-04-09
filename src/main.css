@@ -78,6 +78,18 @@ img:hover.pulse {
   }
 }
 
+div.six-day-forecast {
+  background: linear-gradient(
+    329deg,
+    rgb(115, 120, 252) 0%,
+    rgb(85, 177, 246) 100%
+  );
+  border-radius: 21%;
+  padding-left: 0;
+  padding-right: 0;
+  border: 1px solid white;
+}
+
 .celsius-btn:hover {
   background: linear-gradient(
     120deg,
