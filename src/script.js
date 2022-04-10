@@ -151,10 +151,10 @@ function displayWeatherForecast(response) {
               forecastDay.weather[0].icon
             }@2x.png" alt="" width="75"/><br /><span
             class="forecast-max-temp"
-            >${Math.round(forecastDay.temp.max)}°/</span
-            ><span class="forecast-min-temp">${Math.round(
+            >${Math.round(forecastDay.temp.max)}</span
+            >°/<span class="forecast-min-temp">${Math.round(
               forecastDay.temp.min
-            )}°</span>
+            )}</span>°
             </div>
             `;
     }
