@@ -52,13 +52,13 @@ function displayWeatherInfo(response) {
   document.querySelector("#current-max-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
-  document.querySelector("#current-low-temp").innerHTML = Math.round(
+  document.querySelector("#current-min-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
+  windSpeed = response.data.wind.speed;
+  document.querySelector("#wind").innerHTML =
+    Math.round(windSpeed * 0.621371) + "mph";
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#current-date").innerHTML = formatDate(
@@ -182,4 +182,4 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-searchCity("Brooklyn");
+searchCity("New York");
