@@ -55,6 +55,7 @@ a {
 audio {
   border-radius: 30px;
   box-shadow: 2px 2px 4px 0px #9ba586;
+  margin-top: 12px;
 }
 
 ul .weather-description::first-letter {
