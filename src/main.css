@@ -3,6 +3,8 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  background-image: url("../images/Kingdom\ Hearts\ background.jpg");
+  color: white;
 }
 
 ul {
@@ -47,6 +49,12 @@ div .col-6 {
 
 a {
   text-decoration: none;
+  color: #2397e4;
+}
+
+audio {
+  border-radius: 30px;
+  box-shadow: 2px 2px 4px 0px #9ba586;
 }
 
 ul .weather-description::first-letter {
@@ -55,7 +63,7 @@ ul .weather-description::first-letter {
 
 button.lctn-btn {
   background: #5ba9f7;
-  border: 2px solid black;
+  border: 2px solid #000;
   padding: 5px 8px;
 }
 
@@ -66,10 +74,8 @@ button.search-btn {
 }
 
 div.six-day-forecast {
-  border-radius: 21%;
   padding-left: 0;
   padding-right: 0;
-  border: 1px solid white;
 }
 
 .celsius-btn:hover {
@@ -88,6 +94,19 @@ div.six-day-forecast {
   );
 }
 
+.six-day-forecast:hover,
+.weather-description:hover {
+  animation: pulse 1s infinite ease-in-out alternate;
+}
+@keyframes pulse {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
 .weather-app-wrapper {
   margin: 0 auto;
   max-width: 800px;
@@ -95,8 +114,10 @@ div.six-day-forecast {
 }
 
 .weather-app {
-  border: 2px solid #000;
+  background-color: rgb(0 0 0 / 50%);
   border-radius: 15px;
+  border: 2px solid #ffff;
+  box-shadow: 0px 10px 21px;
 }
 
 .today-forecast {
@@ -114,8 +135,8 @@ div.six-day-forecast {
 
 .celsius-btn,
 .fahrenheit-btn {
-  border: 1.5px solid #000;
-  color: #000;
+  border: 1.5px solid #ffff;
+  color: #ffff;
 }
 
 .celsius-btn {
@@ -127,8 +148,8 @@ div.six-day-forecast {
 }
 
 .forecast-day {
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
 }
 
 .forecast-max-temp {

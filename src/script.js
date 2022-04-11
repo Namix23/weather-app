@@ -141,7 +141,7 @@ function displayWeatherForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-            <div class="six-day-forecast col">
+            <div class="six-day-forecast pulse col">
             <span class="forecast-day">${formatDay(forecastDay.dt)}</span>
             <img 
             src="http://openweathermap.org/img/wn/${
