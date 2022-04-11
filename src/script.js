@@ -43,17 +43,16 @@ function formatDate(timestamp) {
 }
 
 function displayWeatherInfo(response) {
-  console.log(response.data);
   getForecast(response.data.coord);
   document.querySelector("#city-and-country").innerHTML =
     response.data.name + "," + response.data.sys.country;
   fahrenheitTemp = response.data.main.temp;
   document.querySelector("#current-temp").innerHTML =
     Math.round(response.data.main.temp) + "°";
-  document.querySelector("#high-temp").innerHTML = Math.round(
+  document.querySelector("#current-max-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
-  document.querySelector("#low-temp").innerHTML = Math.round(
+  document.querySelector("#current-low-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
@@ -112,7 +111,6 @@ let locationForm = document.querySelector("#location-form");
 locationForm.addEventListener("submit", handleSubmit);
 
 function showCelsiusTemperature(event) {
-  event.preventDefault();
   fahrenheitButton.classList.remove("active");
   celsiusButton.classList.add("active");
   let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
@@ -124,7 +122,6 @@ let celsiusButton = document.querySelector("#celsius-btn");
 celsiusButton.addEventListener("click", showCelsiusTemperature);
 
 function showFahrenheitTemperature(event) {
-  event.preventDefault();
   celsiusButton.classList.remove("active");
   fahrenheitButton.classList.add("active");
   document.querySelector("#current-temp").innerHTML =
